@@ -9,22 +9,34 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Machine Learning Main Ideas
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+### Qestion 1
+1) Supervised learning means that there is an existing labeled dataset that can be learned from, as if there is an "answer key" such that we can "supervised" the machine on its accuracy of prediction and modeling.    
+2) Unsupervised learning means that there is no such labeled dataset that can be learned from. Thus, we cannot "supervise" its learning because we don't even know what the data should look like.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Another difference between supervised and unsupervised learning is that, while supervised learning involves regression and classification to establish models, unsupervised learning uses methods such as clustering to learn from unknown models. 
 
-```{r cars}
-summary(cars)
-```
+### Qestion 2
+1) For the regression model, the response variable is quantitative, which means that it is numeric and can be directly calculated. Thus, the regression model allows us to predict trans based on existing labeled data. For example, we can use the existing data to establish model about the gas price for next month.
+2) For the classification model, the response variable is qualitative, so it cannot be directly calculated as numbers. For example, classification model can be established on issues about whether a person is graduate or not, which is not numeric and is thus qualitative.
 
-## Including Plots
+### Qestion 3
 
-You can also embed plots, for example:
+### Qestion 4
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+### Qestion 5
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+### Qestion 6
+
+## Exploratory Data Analysis
+
+### Qestion 1
+
+### Qestion 2
+
+### Qestion 3
+
+### Qestion 4
+
+### Qestion 5
