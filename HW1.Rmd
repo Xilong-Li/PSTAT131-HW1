@@ -22,21 +22,84 @@ Another difference between supervised and unsupervised learning is that, while s
 2) For the classification model, the response variable is qualitative, so it cannot be directly calculated as numbers. For example, classification model can be established on issues about whether a person is graduate or not, which is not numeric and is thus qualitative.
 
 ### Qestion 3
+1) Two commonly used metrics for regression ML problems: Mean Squared Error (MSE) and Root Mean Squared Error (RMSE);
+
+2) Two commonly used metrics for classification ML problems: Accuracy and F1-score;
 
 ### Qestion 4
+1) Descriptive: Choose model to best visually emphasize a trend in data;
+2) Inferential: what features are significant? --- to test theories and state relationship between outcome & predictors;
+3) Predictive: What combo of features fits best? --- to predict Y with minimum reducible error    
+(Answers above are cited from Lecture 2)
 
 ### Qestion 5
+"A mechanistic model uses a theory to predict what will happen in the real world. The alternative approach, empirical modeling, studies real-world events to develop a theory." (cited from https://smallbusiness.chron.com/mechanistic-model-12706.html)    
+In addition, Mechanistic model assume a parametric form for f, while empirical model does not make any assumptions about f. Empirical model also requries a larger number of observations than mechanistic model. (cited from Lecture)    
+    
+Usually, Mechanistic model has more flexibility than empirical model, since mechanistic model can add parameters. Therefore, since more flexibility usually means less interpretability and sometimes more error, I think empirically-driven model is easier to understand.
+    
+According to the Bias-Variance trade-off, we always want to find a model that has low variance and low bias. However, we usually have a trade-off between the level of variance and bias. And also because Mechanistically-driven model has higher flexibility, which as a result will have low bias and high variance. On the opposite side, simpler model will have higher bias and lower variance. Therefore, the bias-variance trade-off would affect our selection between mechanistic and empirical model. But still, we want to find a model that has lowest variance and bias. And we also want to avoid overfitting in the model selection.
 
 ### Qestion 6
+1) The first question is predictive, because a data set about the voter is given in order to predict the likely choice that he/she will make in voting for the candidate.
+2) The second question is inferential, because it aims to understand the relationship between "whether the vote has personal contact with the candidate" and "voter’s likelihood of support for the candidate". This question strives to understand how these two factors are related.
 
 ## Exploratory Data Analysis
-
+```{r}
+library(tidyverse)
+library(ggplot2)
+head(mpg)
+```
 ### Qestion 1
+```{r}
+ggplot(mpg, aes(hwy)) + geom_histogram()
+
+```
+As it is shown on the graph above, most highway miles per gallon data is less than 30. And there are two peaks on the graph: the first peak is between between 15 and 20, and the second peak is between 25 and 30.
 
 ### Qestion 2
+```{r}
+ggplot(mpg, aes(hwy, cty)) + geom_point()
+```
+As the graph above has shown, there is a clear lineal relationship between hwy and cty, since all points are aligned to form an approximate line with positive slope.    
+This means that there is a positive linear relationship between hwy and cty: as hwy increases, cty would also increase.
 
 ### Qestion 3
+```{r}
+ordered_data <- mpg %>% 
+  group_by(manufacturer) %>% 
+  summarise(count = n()) %>% 
+  arrange(count)
+ordered_data
+ggplot(ordered_data, aes(x = count, y = reorder(manufacturer, -count))) + geom_bar(stat = "identity")
+```
+Therefore, as the graph above has shown, dodge produced the most cars, and lincoln produced the least car.
 
 ### Qestion 4
+```{r}
+ggplot(data=mpg, aes(x= as.factor(cyl), y = hwy)) + geom_boxplot()
+```
+From the graph shown above, we can see that there is indeed a pattern. As cyl increases, hwy decreases. This means that there exists a negative relationship between cyl and hwy, which makes intuitive sense because as the car has more cyl, it would consume more gas and thus has lower miles per gallon.
 
 ### Qestion 5
+```{r}
+#install.packages("corrplot")
+library(corrplot)
+
+# select numeric parameters from mpg:
+selected_mpg <- mpg %>%  select (-c(manufacturer, model, trans, drv, fl, class))
+corrplot(cor(selected_mpg), type = 'lower')
+
+```
+As it is shown on the graph above:
+1) displ has positive correlation with cyl;
+2) displ has negative correlation with cty;
+3) displ has negative correlation with hwy;
+4) cyl has negative correlation with cty;
+5) cyl has negative correlation with hwy;
+6) cty has positive correlation with hwy;
+    
+Those correlation all make sense to me:    
+1) it is intuitive that the more cyl a car has, the more gas it would consume, and the less miles per gallon it would have, regardless whether it is on highway or city road.
+2) it also makes sense there is a positive correlation between hwy and cty, since if a car has high miles per gallon on the high way road, it makes sense that it would also have high mpg on city road.
+3) I don't understand what displ (engine displacement) is because I never heard of this term, but I guess it would make sense too :-)
