@@ -2,7 +2,9 @@
 title: "HW1"
 author: "Xilong Li (3467966)"
 date: '2022-04-02'
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
@@ -36,7 +38,7 @@ Another difference between supervised and unsupervised learning is that, while s
 "A mechanistic model uses a theory to predict what will happen in the real world. The alternative approach, empirical modeling, studies real-world events to develop a theory." (cited from https://smallbusiness.chron.com/mechanistic-model-12706.html)    
 In addition, Mechanistic model assume a parametric form for f, while empirical model does not make any assumptions about f. Empirical model also requries a larger number of observations than mechanistic model. (cited from Lecture)    
     
-Usually, Mechanistic model has more flexibility than empirical model, since mechanistic model can add parameters. Therefore, since more flexibility usually means less interpretability and sometimes more error, I think empirically-driven model is easier to understand.
+Usually, Empirical model has much more flexibility than Mechanistic model, since mechanistic model is parametric while the other is not parametric. Therefore, since more flexibility usually means less interpretability and sometimes more error, I think mechanistic-driven model is easier to understand.
     
 According to the Bias-Variance trade-off, we always want to find a model that has low variance and low bias. However, we usually have a trade-off between the level of variance and bias. And also because Mechanistically-driven model has higher flexibility, which as a result will have low bias and high variance. On the opposite side, simpler model will have higher bias and lower variance. Therefore, the bias-variance trade-off would affect our selection between mechanistic and empirical model. But still, we want to find a model that has lowest variance and bias. And we also want to avoid overfitting in the model selection.
 
