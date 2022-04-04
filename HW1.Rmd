@@ -5,6 +5,7 @@ date: '2022-04-02'
 output:
   html_document:
     df_print: paged
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -94,14 +95,18 @@ corrplot(cor(selected_mpg), type = 'lower')
 
 ```
 As it is shown on the graph above:
-1) displ has positive correlation with cyl;
-2) displ has negative correlation with cty;
-3) displ has negative correlation with hwy;
-4) cyl has negative correlation with cty;
-5) cyl has negative correlation with hwy;
-6) cty has positive correlation with hwy;
+1) displ has (little) positive correlation with year;
+2) displ has positive correlation with cyl;
+3) displ has negative correlation with cty;
+4) displ has negative correlation with hwy;
+5) year has (little) positive correlation with cyl;
+6) year has (little) negative correlation with cty;
+7) cyl has negative correlation with cty;
+8) cyl has negative correlation with hwy;
+9) cty has positive correlation with hwy;
     
-Those correlation all make sense to me:    
+Most correlations make sense to me:    
 1) it is intuitive that the more cyl a car has, the more gas it would consume, and the less miles per gallon it would have, regardless whether it is on highway or city road.
 2) it also makes sense there is a positive correlation between hwy and cty, since if a car has high miles per gallon on the high way road, it makes sense that it would also have high mpg on city road.
 3) I don't understand what displ (engine displacement) is because I never heard of this term, but I guess it would make sense too :-)
+4) what I don't really understand is that, while year has really slight negative correlation with cty, it does not have any correlation with hwy. Perhaps it is because cars on high way all have similar mpg?
